@@ -490,7 +490,7 @@ disconnectedCallback() {
 
       if (isBanne) {
         // Same icon for open/closed (legacy Activhome store banne look)
-        iconSrc = `/local/icons/stores/storebanne-unique.svg?v=1`;
+        iconSrc = `/local/community/activhome-icons/dist/icons/storebanne-unique.svg?v=1`;
 
         const etat = getBanneEtat(stateObj);
         if (etat) displayName = `${baseName} ${etat}`; // no dash
@@ -500,7 +500,7 @@ disconnectedCallback() {
         // existing mapping for store (and any non-banne)
         const file = getStoreIconFileFromPosition(pos, this._config.cover_variant);
 
-        iconSrc = `/local/icons/stores/store_${file}.svg?v=1`;
+        iconSrc = `/local/community/activhome-icons/dist/icons/store_${file}.svg?v=1`;
       }
 
       const presetCss = stylePresetCss(this._config.style);
