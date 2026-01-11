@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 512" width="400" height="512">
+  <g fill="currentColor">
+    <!-- Lames -->
+    <rect x="64" y="80" width="274" height="26" rx="6"/>
+    <rect x="40" y="200" width="320" height="26" rx="6"/>
+
+    <!-- Montants -->
+    <rect x="80"  y="200" width="16" height="186" rx="4"/>
+    <rect x="304" y="200" width="16" height="186" rx="4"/>
+
+    <!-- Barre du bas -->
+    <rect x="80" y="376" width="240" height="16" rx="4"/>
+  </g>
+
+  <!-- Lignes obliques pour perspective -->
+  <g fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round">
+    <!-- extrémités -->
+    <line x1="74"  y1="106" x2="52"  y2="200"/>
+    <line x1="326" y1="106" x2="348" y2="200"/>
+
+    <!-- internes allégées -->
+    <line x1="118.8" y1="106" x2="104"  y2="200"/>
+    <line x1="173.6" y1="106" x2="168"  y2="200"/>
+    <line x1="228.4" y1="106" x2="232"  y2="200"/>
+    <line x1="283.2" y1="106" x2="296"  y2="200"/>
+  </g>
+</svg>
