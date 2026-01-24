@@ -1,240 +1,80 @@
-# Activhome Cover Panel
+# Activhome Cards
 
-**Activhome Cover Panel** est une carte Lovelace personnalisée pour Home Assistant, dédiée au contrôle des **volets, stores et stores bannes** (`cover`).  
-Elle propose une interface **claire, robuste et tactile**, pensée pour un usage quotidien sur tablettes murales et dashboards fixes.
+Les **Activhome Cards** sont un ensemble de cartes Lovelace personnalisées pour **Home Assistant**,  
+développées dans le cadre du projet **Activhome**.
 
-Cette carte fait partie de la gamme Activhome et applique les mêmes principes : lisibilité, cohérence visuelle, stabilité et respect des conventions Home Assistant.
+Ces cartes ont été conçues pour répondre à des besoins **concrets de terrain** (tablettes murales, dashboards fixes, usages professionnels),
+avec une priorité donnée à la **cohérence visuelle**, à la **stabilité**, et à une **expérience tactile maîtrisée**.
 
----
-
-## 1. À quoi sert cette carte ?
-
-Activhome Cover Panel permet de piloter **un volet ou store** sur une seule ligne compacte comprenant :
-
-- une icône SVG dynamique représentant l’état du store
-- un nom cliquable
-- trois actions explicites : **ouvrir**, **stop**, **fermer**
-
-La carte est conçue pour remplacer avantageusement les cartes génériques lorsque la priorité est :
-- la compréhension immédiate des actions,
-- la précision tactile,
-- l’intégration visuelle dans une interface professionnelle.
+> ⚠️ Ces cartes ne sont pas destinées à un usage grand public générique.  
+> Elles sont développées et utilisées dans le cadre du projet Activhome, et mises à disposition à titre de référence technique.
 
 ---
 
-## 2. Dans quels cas l’utiliser ?
+## Philosophie du projet Activhome
 
-Cette carte est particulièrement adaptée aux contextes suivants :
+Le projet Activhome repose sur quelques principes simples :
 
-- Tablette murale Home Assistant
-- Dashboard client ou résidentiel
-- Interfaces tactiles sans souris
-- Contrôle fréquent de volets/stores
-- Projets nécessitant des icônes personnalisées cohérentes
+- Interfaces claires et prévisibles  
+- Refus de l’empilement anarchique de cartes  
+- Composants visuels cohérents et homogènes  
+- Priorité à la lisibilité plutôt qu’à la sur-configuration  
+- Optimisation pour écrans tactiles (iPad, tablettes murales)
 
-👉 Elle est pensée pour un **usage réel**, pas pour une démonstration ponctuelle.
-
----
-
-## 3. Ce que fait la carte
-
-Fonctionnalités principales :
-
-- Affichage sur **une seule ligne (50px)**
-- Icône SVG dynamique basée sur `cover.current_position`
-- Support des variantes :
-  - `store` (par défaut)
-  - `store_banne`
-- Nom cliquable :
-  - navigation vers une vue si configurée
-  - sinon ouverture du *more-info*
-- Actions dédiées :
-  - `open_cover`
-  - `stop_cover`
-  - `close_cover`
-- Styles visuels intégrés
-- Application optionnelle d’un thème Home Assistant **au niveau de la carte uniquement**
-- Éditeur UI natif (aucun YAML obligatoire)
-- Comportement tactile iOS optimisé
+Chaque carte est pensée comme une **brique fonctionnelle**, intégrée dans un système plus large.
 
 ---
 
-## 4. Ce que la carte ne fait volontairement pas
+## Dépendances importantes
 
-Par conception, Activhome Cover Panel :
+### Icônes Activhome (obligatoire pour les cartes *cover*)
 
-- ne modifie pas la logique Home Assistant des services `cover`
-- ne gère pas les pourcentages manuellement
-- ne remplace pas le *more-info*
-- ne dépend d’aucune librairie externe
-- ne nécessite aucun build ou compilation
+Les cartes suivantes :
+- **activhome-cover-panel**
+- **activhome-cover-stack**
 
-👉 Toute inversion liée au mode **store_banne** est **strictement visuelle**.
+nécessitent l’installation préalable du dépôt **activhome-icons**.
 
----
-
-## 5. Prérequis techniques
-
-- Home Assistant avec interface Lovelace
-- Une entité du domaine `cover`
-- Accès au dossier `/config/www/`
+Les icônes fournies par ce dépôt font partie intégrante de l’expérience visuelle Activhome  
+et sont requises pour un rendu correct et cohérent des cartes *cover*.
 
 ---
 
-## 6. Ressources graphiques requises (icônes)
+## Cartes Activhome (par ordre de priorité fonctionnelle)
 
-Cette carte **nécessite des icônes SVG personnalisées Activhome** pour fonctionner correctement.
+1. **activhome-bar**  
+2. **activhome-light-panel**  
+3. **activhome-light-stack**  
+4. **activhome-light-onoff-stack**  
+5. **activhome-cover-panel**  
+6. **activhome-cover-stack**  
+7. **activhome-house-status-card**  
+8. **activhome-browser-control-card**  
+9. **activhome-server-switcher**  
+10. **activhome-back-button-card**  
+11. **activhome-icons**  
 
-### Arborescence attendue
-
-Créer l’arborescence suivante dans le dossier `www` :
-
-```
-/config/www/
-└── icons/
-    └── stores/
-        ├── store_0.svg
-        ├── store_10.svg
-        ├── store_20.svg
-        ├── ...
-        ├── store_100.svg
-        └── storebanne-unique.svg
-```
-
-### Détail des fichiers requis
-
-- **11 fichiers** pour les stores classiques :  
-  `store_0.svg` → `store_100.svg` (par pas de 10)
-- **1 fichier spécifique** pour les stores bannes :  
-  `storebanne-unique.svg`
-
-👉 Ces fichiers sont utilisés uniquement pour l’affichage visuel.  
-👉 La logique Home Assistant reste inchangée.
+*(Cette liste reflète les priorités actuelles du projet et peut évoluer.)*
 
 ---
 
-## 7. Installation (manuelle)
+## Organisation des dépôts et contact
 
-### Étape 1 — Télécharger le fichier
+Chaque carte dispose de son **dépôt GitHub dédié**, mais partage :
 
-Télécharger le fichier suivant depuis la dernière version :
+- la même philosophie de conception,
+- les mêmes principes UI,
+- la même licence.
 
-```
-activhome-cover-panel.js
-```
+La documentation détaillée par carte est volontairement **minimale**.
 
-### Étape 2 — Copier le fichier
-
-Créer le dossier suivant si nécessaire :
-
-```
-/config/www/activhome-cover-panel/
-```
-
-Puis y placer le fichier :
-
-```
-/config/www/activhome-cover-panel/activhome-cover-panel.js
-```
-
-### Étape 3 — Déclarer la ressource
-
-Dans Home Assistant :
-
-- **Paramètres → Tableaux de bord → Ressources**
-- Ajouter une ressource :
-  - Type : *JavaScript module*
-  - URL :
-
-```
-/local/activhome-cover-panel/activhome-cover-panel.js
-```
-
-Redémarrer ou rafraîchir le navigateur.
+👉 Pour toute question, clarification technique, usage spécifique ou discussion autour du projet Activhome :  
+- contact direct : [i.becq@activ-home.ch](mailto:i.becq@activ-home.ch)  
+- contact projet : [info@activ-home.ch](mailto:info@activ-home.ch)
 
 ---
 
-## 8. Utilisation de base
-
-Configuration minimale :
-
-```yaml
-type: custom:activhome-cover-panel
-entity: cover.salon
-```
-
----
-
-## 9. Options de configuration
-
-### Options principales
-
-| Option | Description |
-|------|------------|
-| `entity` | Entité cover (obligatoire) |
-| `name` | Nom affiché personnalisé |
-| `navigation_path` | Navigation au clic sur le nom |
-| `tap_action` | Action UI native (navigate) |
-| `theme` | Thème Home Assistant appliqué à la carte |
-| `style` | Style visuel de la carte |
-| `font_size` | Taille du texte (16px à 24px) |
-| `card_style` | CSS avancé injecté dans la carte |
-| `cover_variant` | `store` (défaut) ou `store_banne` |
-
----
-
-## 10. Variantes de store
-
-### `store` (par défaut)
-- Mapping visuel standard
-- Icône dynamique basée sur `current_position`
-
-### `store_banne`
-- Mapping **visuel inversé uniquement**
-- Utilise l’icône `storebanne-unique.svg`
-- Même logique Home Assistant
-- Même services appelés
-
-👉 Aucun impact fonctionnel sur Home Assistant.
-
----
-
-## 11. Styles visuels disponibles
-
-Styles intégrés :
-
-- transparent  
-- transparent_vertical_stack  
-- activhome  
-- glass  
-- dark_glass  
-- solid  
-- neon_pulse  
-- neon_glow  
-- primary_breathe  
-- primary_tint  
-
----
-
-## 12. Bonnes pratiques
-
-- Vérifier la présence des icônes avant utilisation
-- Utiliser `store_banne` uniquement pour des stores bannes réels
-- Laisser le nom court pour préserver la lisibilité
-- Réserver `card_style` aux ajustements visuels fins
-
----
-
-## 13. Notes importantes
-
-- Hauteur fixe : **50px**
-- Taille de police par défaut : **20px**
-- Les styles et thèmes s’appliquent uniquement à la carte
-- Comportement tactile iOS optimisé (pas d’effet stroboscopique)
-
----
-
-## 14. Licence
+## Licence
 
 MIT License  
-© 2025 — Activhome / Iouri Becq
+© 2025–2026 — Iouri Becq / Activhome
